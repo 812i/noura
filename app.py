@@ -577,6 +577,7 @@ elif page == "Live AI Demo":
         st.session_state.message = (
             "I'm thinking of a number between 1 and 20. Can you guess it? You have 5 attempts."
         )
+        st.session_state.submitted = False
 
     st.info(st.session_state.message)
 
@@ -591,14 +592,16 @@ elif page == "Live AI Demo":
             submit = st.form_submit_button("Submit Guess!")
 
         if submit:
+            st.session_state.submitted = True
             st.session_state.attempts_left -= 1
 
-            if guess == st.session_state.secret:
+            if st.session_state.submitted and guess == st.session_state.secret:
                 st.session_state.message = (
                     f"🎉 Correct! The number was {st.session_state.secret}. You win!"
                 )
                 st.session_state.game_over = True
                 st.balloons()   
+
             elif st.session_state.attempts_left == 0:
                  st.session_state.message = (
                     f"😢 Game Over! The number was {st.session_state.secret}."
@@ -613,7 +616,6 @@ elif page == "Live AI Demo":
                 st.rerun()
 
         
-
     if st.session_state.game_over:
         if st.button("Play Again"):
             st.session_state.secret = random.randint(1, 20)
