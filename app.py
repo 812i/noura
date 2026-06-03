@@ -574,13 +574,10 @@ elif page == "Live AI Demo":
         st.session_state.secret = random.randint(1, 20)
         st.session_state.attempts_left = 5
         st.session_state.game_over = False
-        st.session_state.message = (
-            "I'm thinking of a number between 1 and 20. Can you guess it? You have 5 attempts."
-        )
-        st.session_state.submitted = False
-
+        st.session_state.message = "I'm thinking of a number between 1 and 20. Can you guess it? You have 5 attempts."
+    
     st.info(st.session_state.message)
-
+        
     if not st.session_state.game_over:
         with st.form("guess_form"):
             guess = st.number_input(
@@ -592,39 +589,30 @@ elif page == "Live AI Demo":
             submit = st.form_submit_button("Submit Guess!")
 
         if submit:
-            st.session_state.submitted = True
             st.session_state.attempts_left -= 1
 
-            if st.session_state.submitted and guess == st.session_state.secret:
-                st.session_state.message = (
-                    f"🎉 Correct! The number was {st.session_state.secret}. You win!"
-                )
+            if guess == st.session_state.secret:
+                st.session_state.message = f"🎉 Correct! The number was {st.session_state.secret}. You win!"
                 st.session_state.game_over = True
-                st.balloons()   
-                st.stop()
+                st.rerun()
+                
+    
 
             elif st.session_state.attempts_left == 0:
-                 st.session_state.message = (
-                    f"😢 Game Over! The number was {st.session_state.secret}."
-                )
+                 st.session_state.message = f"😢 Game Over! The number was {st.session_state.secret}."
                  st.session_state.game_over = True
-                 st.rerun()
+                 
             else:
                 hint = "higher" if guess < st.session_state.secret else "lower"
-                st.session_state.message = (
-                    f"Wrong! Try a {hint} number. Attempts left: {st.session_state.attempts_left}"
-                )
+                st.session_state.message = f"Wrong! Try a {hint} number. Attempts left: {st.session_state.attempts_left}"
                 st.rerun()
-
         
     if st.session_state.game_over:
         if st.button("Play Again"):
             st.session_state.secret = random.randint(1, 20)
             st.session_state.attempts_left = 5
             st.session_state.game_over = False
-            st.session_state.message = (
-                "I'm thinking of a number between 1 and 20. Can you guess it? You have 5 attempts."
-            )
+            st.session_state.message = "I'm thinking of a number between 1 and 20. Can you guess it? You have 5 attempts."
             st.rerun()
     
 
