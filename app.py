@@ -604,13 +604,15 @@ elif page == "Live AI Demo":
                     f"😢 Game Over! The number was {st.session_state.secret}."
                 )
                  st.session_state.game_over = True
+                 st.rerun()
             else:
                 hint = "higher" if guess < st.session_state.secret else "lower"
                 st.session_state.message = (
                     f"Wrong! Try a {hint} number. Attempts left: {st.session_state.attempts_left}"
                 )
+                st.rerun()
 
-            st.rerun()
+        
 
     if st.session_state.game_over:
         if st.button("Play Again"):
