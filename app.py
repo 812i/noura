@@ -100,28 +100,6 @@ st.markdown(
 
 
 
-st.markdown(
-    """
-    <style>
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-        background-color: transparent;
-        color: #94A3B8;
-        font-size: 14px;
-        padding: 10px;
-    }
-    </style>
-    <div class="footer">
-        Made with ❤️ by Noura Mubarak
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
 
 
 st.sidebar.title("🧭 Navigate")
@@ -146,7 +124,7 @@ if page == "Home":
 
     with col1:
         st.image(
-            "Noura .PNG",
+            "Noura.PNG",
             caption="Noura Robot",
             use_container_width=True,
         )
@@ -620,12 +598,12 @@ elif page == "Live AI Demo":
                     f"🎉 Correct! The number was {st.session_state.secret}. You win!"
                 )
                 st.session_state.game_over = True
-                st.balloons()
             elif st.session_state.attempts_left == 0:
-                st.session_state.message = (
+                 st.balloons()
+                 st.session_state.message = (
                     f"😢 Game Over! The number was {st.session_state.secret}."
                 )
-                st.session_state.game_over = True
+                 st.session_state.game_over = True
             else:
                 hint = "higher" if guess < st.session_state.secret else "lower"
                 st.session_state.message = (
@@ -701,3 +679,24 @@ elif page == "Doodle AI":
         else:
             st.error(f"❌ Wrong! The AI drew a **{st.session_state.secret_category}**.")
         st.session_state.secret_category = random.choice(categories)
+
+st.markdown(
+    """
+    <style>
+    .footer {
+        position: relative;
+        margin-top: 50px;
+        width: 100%;
+        text-align: center;
+        background-color: transparent;
+        color: #94A3B8;
+        font-size: 14px;
+        padding: 10px;
+    }
+    </style>
+    <div class="footer">
+        Made with ❤️ by Noura Mubarak
+    </div>
+    """,
+    unsafe_allow_html=True
+)
