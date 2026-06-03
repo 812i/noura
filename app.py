@@ -598,8 +598,8 @@ elif page == "Live AI Demo":
                     f"🎉 Correct! The number was {st.session_state.secret}. You win!"
                 )
                 st.session_state.game_over = True
+                st.balloons()   
             elif st.session_state.attempts_left == 0:
-                 st.balloons()
                  st.session_state.message = (
                     f"😢 Game Over! The number was {st.session_state.secret}."
                 )
