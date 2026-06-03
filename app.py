@@ -601,6 +601,7 @@ elif page == "Live AI Demo":
                 )
                 st.session_state.game_over = True
                 st.balloons()   
+                st.stop()
 
             elif st.session_state.attempts_left == 0:
                  st.session_state.message = (
