@@ -9,7 +9,7 @@ from io import BytesIO
 
 
 st.set_page_config(
-    page_title="Noura | AI Resume",
+    page_title="Norah | AI Resume",
     page_icon="🤖",
     layout="wide"
 )
@@ -125,13 +125,13 @@ if page == "Home":
     with col1:
         st.image(
             "Noura.PNG",
-            caption="Noura Robot",
+            caption="Norah Robot",
             use_container_width=True,
         )
 
     with col2:
         st.markdown('<p class="section-subtitle">WELCOME</p>', unsafe_allow_html=True)
-        st.title("Noura Mubarak")
+        st.title("Norah Mubark")
         st.subheader("AI Student | Machine Learning & Intelligent Systems")
 
         st.write(
@@ -688,7 +688,7 @@ st.markdown(
     }
     </style>
     <div class="footer">
-        Made with ❤️ by Noura Mubarak
+        Made with ❤️ by Norah Mubark
     </div>
     """,
     unsafe_allow_html=True
