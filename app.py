@@ -124,7 +124,7 @@ if page == "Home":
 
     with col1:
         st.image(
-            "Noura.PNg",
+            "Noura.PNG",
             caption="Norah Robot",
             use_container_width=True,
         )
